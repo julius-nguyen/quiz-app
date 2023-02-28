@@ -106,10 +106,9 @@ class ConfigQuizInterface:
     
     def set_player_mode(self):
         self.selected_mode = self.rbtn_state.get()
-        print(self.selected_mode)
 
     def set_qtype(self):
-        if self.type_rbtn_state.get() == 2:
+        if self.type_rbtn_state.get() == 4:
             self.q_type = 'multiple'
         else:
             self.q_type = 'boolean'
@@ -118,15 +117,12 @@ class ConfigQuizInterface:
 
         self.cat = categories[choice]
 
-        print(self.cat)
 
     def get_difficulty_selection(self,choice):
         self.difficulty_level = choice 
-        print(self.difficulty_level)
 
     def get_n_selection(self,choice):
         self.n_questions = self.n_var.get()
-        print(self.n_questions)
 
     def finish_setup(self):
         self.parameters = {
