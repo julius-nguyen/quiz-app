@@ -40,10 +40,11 @@ numbers = [i for i in range(1,40) if i % 5 == 0]
 class ConfigQuizInterface:
     def __init__(self):
         self.selected_mode = 0 # default value = Any
-        self.cat = 'Any' # default value
+        self.cat = '0' # default value
         self.difficulty_level = 'easy' #default value
         self.n_questions = 5
-        self.q_type = 2
+        self.q_type = 'boolean'
+        self.parameters = {}
 
         self.window = tk.Tk()
         self.window.title('Quiz Game: Setup the Game')
@@ -98,7 +99,7 @@ class ConfigQuizInterface:
         self.n_menu.configure(width=10,bg=THEME_COLOUR)
         self.n_menu.grid(column=1,row=5,pady=5,columnspan=1)
 
-        self.finish_setup_btn = tk.Button(text='Finish setup and start game',font=('SF Pro',15,'normal'),bd=0,fg=THEME_COLOUR,highlightbackground=THEME_COLOUR,bg=THEME_COLOUR)
+        self.finish_setup_btn = tk.Button(text='Finish setup and start game',font=('SF Pro',15,'normal'),bd=0,fg=THEME_COLOUR,highlightbackground=THEME_COLOUR,bg=THEME_COLOUR,command=self.finish_setup)
         self.finish_setup_btn.grid(column=1,row=6,sticky='E',columnspan=2,pady=(30,5))
 
         self.window.mainloop()
@@ -108,10 +109,15 @@ class ConfigQuizInterface:
         print(self.selected_mode)
 
     def set_qtype(self):
-        self.q_type = self.type_rbtn_state.get()
+        if self.type_rbtn_state.get() == 2:
+            self.q_type = 'multiple'
+        else:
+            self.q_type = 'boolean'
 
     def get_category_selection(self,choice):
-        self.cat = choice
+
+        self.cat = categories[choice]
+
         print(self.cat)
 
     def get_difficulty_selection(self,choice):
@@ -122,4 +128,19 @@ class ConfigQuizInterface:
         self.n_questions = self.n_var.get()
         print(self.n_questions)
 
-cfg_ui = ConfigQuizInterface()
+    def finish_setup(self):
+        self.parameters = {
+            'amount': self.n_questions,
+            'type': self.q_type,
+            'category': self.cat,
+            'difficulty': self.difficulty_level
+        }
+        self.quit()
+
+    def quit(self):
+        self.window.quit()
+
+    def destroy(self):
+        self.window.destroy()
+
+#cfg_ui = ConfigQuizInterface()
