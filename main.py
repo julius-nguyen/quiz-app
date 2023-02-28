@@ -6,9 +6,9 @@ import requests
 
 question_bank = []
 
+cfg_ui = ConfigQuizInterface()
 config = True 
 while config:
-    cfg_ui = ConfigQuizInterface()
     if cfg_ui.parameters != {}:
         config = False 
 
@@ -20,6 +20,7 @@ response.raise_for_status()
 cfg_ui.destroy()
 
 question_data = response.json()['results']
+print(question_data)
 
 for question in question_data:
     question_text = question["question"]
