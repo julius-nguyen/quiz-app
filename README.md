@@ -6,6 +6,7 @@
 - currently working with the following restrictions:
   - Single Player Mode must be selected
   - True/False question type must be selected
+- all other selections should work
   
 Happy Quizzing!
 
