@@ -13,6 +13,8 @@
 ## **Bugfixes**
 It is possible to run the code on other distributions than MacOS. If you want to do that, it is currently necessary to replace `tkmacosx.Button` by `tk.Button` in the `mc_ui.py` file. This issue will be fixed in the future.
 
+Variable text size affect button and window frame size (will be fixed). 
+
 Sometimes, the Open Trivia API might return an empty list of results leading the quiz to load no questions. This error occurs when several attempts to load the quiz has been made in a short period of time.
 
 ## **To DO's:**
