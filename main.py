@@ -16,8 +16,6 @@ while config:
 mode = cfg_ui.selected_mode
 quiz_type = cfg_ui.q_type
 
-print(cfg_ui.parameters)
-
 response = requests.get('https://opentdb.com/api.php?',params=cfg_ui.parameters)
 response.raise_for_status()
 
@@ -26,7 +24,6 @@ cfg_ui.destroy()
 question_data = response.json()['results']
 
 for question in question_data:
-    print(question)
     question_text = question["question"]
     question_answer = question["correct_answer"]
     question_incorrect_answers = question["incorrect_answers"]
