@@ -24,10 +24,11 @@ cfg_ui.destroy()
 question_data = response.json()['results']
 
 for question in question_data:
+    question_category = question["category"]
     question_text = question["question"]
     question_answer = question["correct_answer"]
     question_incorrect_answers = question["incorrect_answers"]
-    new_question = Question(question_text, question_answer,question_incorrect_answers)
+    new_question = Question(question_category, question_text, question_answer,question_incorrect_answers)
     question_bank.append(new_question)
 
 
