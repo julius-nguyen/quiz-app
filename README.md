@@ -6,7 +6,6 @@
 - currently working with the following restrictions:
   - run the program on MacOS or see bugfix section
   - Single Player Mode must be selected
-  - True/False question type must be selected
 - all other selections should work
 
 *Note:* The current version is work in progress. Built and tested on MacOS. 
@@ -19,7 +18,7 @@ Sometimes, the Open Trivia API might return an empty list of results leading the
 ## **To DO's:**
 - add topic to question number label
 - add total number of questions to score
-- program UI for multiple choice questions and multiple player mode
+- enable multiple player mode
 - *optionally:* keep track of past highscore and notify player when new highscore has been reached (in single player mode only)
 - add possibility to load own questions
 - include option to start a new quiz when quiz has been completed
