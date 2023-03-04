@@ -16,10 +16,11 @@ class QuizBrain:
         self.current_question = self.question_list[self.question_number]
         self.question_number += 1
 
-        return html.unescape(self.current_question.text)
+        return self.current_question.category, html.unescape(self.current_question.text)
       
     def get_answers(self):
         answers = self.current_question.incorrect_answers + [self.current_question.correct_answer]
+        answers = [html.unescape(answer) for answer in answers]
         random.shuffle(answers)
 
         return answers
