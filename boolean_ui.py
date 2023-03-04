@@ -44,6 +44,7 @@ class BoolQuizInterface:
             self.number_label['text'] = f'Question {q_number}'
         else:
             self.canvas.config(bg=SAND)
+            self.number_label['text'] = ''
             self.canvas.itemconfig(self.q_text, text='You\'ve reached the end of the questions.')
             self.button_right.config(state='disabled')
             self.button_wrong.config(state='disabled')
