@@ -1,4 +1,5 @@
 import html 
+import random 
 
 class QuizBrain:
 
@@ -17,6 +18,12 @@ class QuizBrain:
 
         return html.unescape(self.current_question.text)
       
+    def get_answers(self):
+        answers = self.current_question.incorrect_answers + [self.current_question.correct_answer]
+        random.shuffle(answers)
+
+        return answers
+
     def check_answer(self, user_answer):
         correct_answer = self.current_question.correct_answer
         if user_answer.lower() == correct_answer.lower():
