@@ -17,9 +17,8 @@ class QuizBrain:
 
         return html.unescape(self.current_question.text)
       
-
     def check_answer(self, user_answer):
-        correct_answer = self.current_question.answer
+        correct_answer = self.current_question.correct_answer
         if user_answer.lower() == correct_answer.lower():
             self.score += 1
             return True 
