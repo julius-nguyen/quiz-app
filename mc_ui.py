@@ -27,16 +27,16 @@ class MCQuizInterface:
         self.number_label = tk.Label(text='Question 1', bg=THEME_COLOUR, fg=SAND,font=('SF Pro Medium',15,'normal'))
         self.number_label.grid(column=0,row=1,columnspan=2,pady=10)
         
-        self.answer_button1 = tkmacosx.Button(text='1.58 x 10^20', foreground=THEME_COLOUR, bg=BGCOL, borderless=1, highlightthickness=0,font=('SF Pro Bold',15,'normal'),height=40,command=self.answer1)
+        self.answer_button1 = tkmacosx.Button(text='1.58 x 10^20', foreground=THEME_COLOUR, bg=BGCOL, borderless=1, highlightthickness=0,font=('SF Pro Bold',15,'normal'),height=40, width=150, command=self.answer1)
         self.answer_button1.grid(column=0,row=3,pady=10)
 
-        self.answer_button2 = tkmacosx.Button(text='1.58 x 10^22',foreground=THEME_COLOUR, bg=BGCOL, borderless=1, highlightthickness=0,font=('SF Pro Bold',15,'normal'),height=40,command=self.answer2)
+        self.answer_button2 = tkmacosx.Button(text='1.58 x 10^22',foreground=THEME_COLOUR, bg=BGCOL, borderless=1, highlightthickness=0,font=('SF Pro Bold',15,'normal'),height=40,width=150, command=self.answer2)
         self.answer_button2.grid(column=1,row=3,pady=10)
 
-        self.answer_button3 = tkmacosx.Button(text='1.58 x  10^18',foreground=THEME_COLOUR, bg=BGCOL, borderless=1, highlightthickness=0,font=('SF Pro Bold',15,'normal'),height=40,command=self.answer3)
+        self.answer_button3 = tkmacosx.Button(text='1.58 x  10^18',foreground=THEME_COLOUR, bg=BGCOL, borderless=1, highlightthickness=0,font=('SF Pro Bold',15,'normal'),height=40,width=150, command=self.answer3)
         self.answer_button3.grid(column=0,row=4,pady=10)
 
-        self.answer_button4 = tkmacosx.Button(text='1.58 x 10^24',foreground=THEME_COLOUR, bg=BGCOL, borderless=1, highlightthickness=0,font=('SF Pro Bold',15,'normal'),height=40,command=self.answer4)
+        self.answer_button4 = tkmacosx.Button(text='1.58 x 10^24',foreground=THEME_COLOUR, bg=BGCOL, borderless=1, highlightthickness=0,font=('SF Pro Bold',15,'normal'),height=40,width=150, command=self.answer4)
         self.answer_button4.grid(column=1,row=4,pady=10)
 
         self.get_next_question()
@@ -46,10 +46,10 @@ class MCQuizInterface:
     def get_next_question(self):
         if self.quiz.still_has_questions():
             self.canvas.config(self.canvas, bg=SAND)
-            q_text = self.quiz.next_question()
+            q_cat, q_text = self.quiz.next_question()
             q_number = self.quiz.question_number 
             self.canvas.itemconfig(self.q_text,text=q_text)
-            self.number_label['text'] = f'Question {q_number}'
+            self.number_label['text'] = f'Question {q_number}:\n {q_cat}'
 
             # set buttons
             self.answers = self.quiz.get_answers()
@@ -89,6 +89,7 @@ class MCQuizInterface:
         self.give_feedback(is_right)        
 
     def give_feedback(self, is_right):
+        self.window.focus()
         if is_right:
             self.canvas.config(bg=GREEN)
             self.window.after(1000,self.get_next_question)
