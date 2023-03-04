@@ -18,6 +18,9 @@ Variable text size affect button and window frame size (will be fixed).
 Sometimes, the Open Trivia API might return an empty list of results leading the quiz to load no questions. This error occurs when several attempts to load the quiz has been made in a short period of time.
 
 ## **To DO's:**
+- show solution for incorrect answer
+- fix HTML formatting issues
+- remove hightlighting around button when a button has been clicked
 - add topic to question number label
 - add total number of questions to score
 - enable multiple player mode
