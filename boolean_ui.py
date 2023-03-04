@@ -38,10 +38,10 @@ class BoolQuizInterface:
     def get_next_question(self):
         if self.quiz.still_has_questions():
             self.canvas.config(self.canvas, bg=SAND)
-            q_text = self.quiz.next_question()
+            q_cat, q_text = self.quiz.next_question()
             q_number = self.quiz.question_number 
             self.canvas.itemconfig(self.q_text,text=q_text)
-            self.number_label['text'] = f'Question {q_number}'
+            self.number_label['text'] = f'Question {q_number}:\n {q_cat}'
         else:
             self.canvas.config(bg=SAND)
             self.number_label['text'] = ''
